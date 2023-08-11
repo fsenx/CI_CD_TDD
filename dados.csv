@@ -1,0 +1,27 @@
+id_usuario,id_pedido,valor_venda,nome_cliente,estado
+101,1001,150.75,João Silva,SP
+102,1002,67.20,Maria Souza,RJ
+103,1003,220.50,Carlos Oliveira,MG
+101,1004,320.10,João Silva,SP
+104,1005,75.00,Ana Pereira,RS
+105,1006,150.75,Fernando Santos,SP
+102,1007,67.20,Maria Souza,RJ
+106,1008,130.25,Juliana Lima,MG
+101,1009,180.90,João Silva,SP
+107,1010,45.60,Rafael Fernandes,RJ
+108,1011,89.75,Mariana Alves,SP
+104,1012,75.00,Ana Pereira,RS
+109,1013,270.40,Pedro Castro,MG
+102,1014,67.20,Maria Souza,RJ
+110,1015,420.60,Gustavo Oliveira,SP
+111,1016,150.75,Larissa Carvalho,SP
+108,1017,89.75,Mariana Alves,SP
+112,1018,110.20,Vinícius Oliveira,RJ
+101,1019,250.30,João Silva,SP
+113,1020,30.50,Sofia Rodrigues,MG
+114,1021,180.90,Isabela Ribeiro,SP
+101,1001,150.75,João Silva,SP
+102,1002,67.20,Maria Souza,RJ
+103,1003,220.50,Carlos Oliveira,MG
+101,1004,320.10,João Silva,SP
+104,1005,75.00,Ana Pereira,RS
