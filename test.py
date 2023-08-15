@@ -1,13 +1,19 @@
 import pandas as pd
+import unittest
+from trata_dados import *
 
 
-class TestClass:
-    
-    def __init__(self,df):
-        self.df = df
+class TestClass(unittest.TestCase):
+
+    def data_test(self):
+        df = pd.read_csv('dados.csv', sep=',')
+        df = ajusta_tipo(df)
+        df = df.drop_duplicates(subset=['id_pedido'])
+        
+        return df
 
     def test_tipo_colunas(self):
-        entrada = {col: str(dtype) for col, dtype in self.df.dtypes.items()}
+        entrada = {col: str(dtype) for col, dtype in self.data_test().dtypes.items()}
 
         esperado = {
             'id_usuario': 'object',
@@ -20,9 +26,12 @@ class TestClass:
         assert entrada == esperado
         return 200
     
-    def test_nenhuma_duplicata(self):
-        entrada = self.df.duplicated().sum()
+    def test_nao_ha_duplicatas(self):
+        entrada = self.data_test().duplicated().sum()
         esperado = 0
         
         assert entrada == esperado
         return 200
+    
+if __name__ == '__main__':
+    unittest.main()
