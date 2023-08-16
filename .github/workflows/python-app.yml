@@ -44,4 +44,4 @@ jobs:
           --trigger-http \
           --max-instances=2 \ 
           --service-account= sheets-credentials@charming-module-358319.iam.gserviceaccount.com  \
-          --allow-unauthenticated  \
+          --allow-unauthenticated  
