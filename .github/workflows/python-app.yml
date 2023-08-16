@@ -40,5 +40,4 @@ jobs:
           --source=./  
           --runtime=python310 \
           --entry-point=run \
-          --timeout=60s \
           --trigger-http
