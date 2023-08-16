@@ -30,6 +30,7 @@ jobs:
       uses: google-github-actions/auth@v1
       with:
         credentials_json: ${{ secrets.GCP_SECRET }}
+        export_default_credentials: false
 
     - name: Deploy to Cloud Function
       run: |
