@@ -1,17 +1,20 @@
-name: Python CI
+name: Python CI and GCP Deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v2
       with:
         python-version: 3.9
 
@@ -22,3 +25,19 @@ jobs:
 
     - name: Run tests
       run: python -m unittest discover -s . -p 'test.py' -v
+
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0.3.0
+      with:
+        service_account_key: ${{ secrets.GCP_SECRET }}
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        export_default_credentials: true
+
+    - name: Deploy to Cloud Function
+      run: |
+        gcloud functions deploy test_ci_cd \
+          --region=southamerica-east1 \
+          --source=./  
+          --runtime=python310 \
+          --entry-point=run \
+          --timeout=60s
