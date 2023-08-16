@@ -43,5 +43,5 @@ jobs:
           --timeout=60s \
           --trigger-http \
           --max-instances=2 \ 
-          --service-account= sheets-credentials@charming-module-358319.iam.gserviceaccount.com  \
+          --service-account=sheets-credentials@charming-module-358319.iam.gserviceaccount.com \
           --allow-unauthenticated  
