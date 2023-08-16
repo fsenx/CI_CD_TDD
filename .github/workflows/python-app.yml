@@ -27,10 +27,11 @@ jobs:
       run: python -m unittest discover -s . -p 'test.py' -v
 
     - name: Set up Google Cloud SDK
-      run: |
-        pip install google-github-actions/auth
-        gcloud auth activate-service-account --key-file=${{ secrets.GCP_SECRET }}
-        gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
+      uses: google-github-actions/setup-gcloud@v0.3.0
+      with:
+        service_account_key: ${{ secrets.GCP_SECRET }}
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        export_default_credentials: true
 
     - name: Deploy to Cloud Function
       run: |
