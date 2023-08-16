@@ -27,15 +27,13 @@ jobs:
       run: python -m unittest discover -s . -p 'test.py' -v
 
     - name: Set up Google Cloud SDK
-      uses: google-github-actions/setup-gcloud@v0.3.0
-      with:
-        service_account_key: ${{ secrets.GCP_SECRET }}
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        export_default_credentials: true
+      run: |
+        pip install google-github-actions/auth
+        gcloud auth activate-service-account --key-file=${{ secrets.GCP_SECRET }}
+        gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
 
     - name: Deploy to Cloud Function
       run: |
-        
         gcloud functions deploy test_ci_cd \
           --region=southamerica-east1 \
           --source=./ \
@@ -43,6 +41,6 @@ jobs:
           --entry-point=run \
           --timeout=60s \
           --trigger-http \
+          --max-instances=2 \
           --service-account=sheets-credentials@charming-module-358319.iam.gserviceaccount.com \
           --allow-unauthenticated
-
