@@ -41,4 +41,7 @@ jobs:
           --runtime=python310 \
           --entry-point=run \
           --timeout=60s \
-          --trigger-http
+          --trigger-http \
+          --max-instances=2 \ 
+          --service-account= sheets-credentials@charming-module-358319.iam.gserviceaccount.com  \
+          --allow-unauthenticated  \
