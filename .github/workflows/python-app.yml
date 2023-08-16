@@ -42,6 +42,7 @@ jobs:
           --entry-point=run \
           --timeout=60s \
           --trigger-http \
+          --https-only \
           --max-instances=2 \
           --service-account=sheets-credentials@charming-module-358319.iam.gserviceaccount.com \
           --allow-unauthenticated
