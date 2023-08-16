@@ -37,7 +37,7 @@ jobs:
       run: |
         gcloud functions deploy test_ci_cd \
           --region=southamerica-east1 \
-          --source=./  # Use . to deploy the current directory
+          --source=./  
           --runtime=python310 \
           --entry-point=run \
           --timeout=60s \
